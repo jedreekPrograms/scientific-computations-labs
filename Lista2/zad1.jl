@@ -1,4 +1,5 @@
 # Jędrzej Stefanowski
+# Obliczenia naukowe - Lista 2, zadanie 1
 
 # Oblicza iloczyn skalarny przez sumowanie w przód.
 # x, y - wektory wejściowe.
