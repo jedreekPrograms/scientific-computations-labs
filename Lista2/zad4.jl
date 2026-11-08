@@ -18,7 +18,9 @@ end
 
 # Współczynniki wielomianu P w postaci naturalnej.
 # Są zapisane od x^20 do wyrazu wolnego.
-# big"..." zachowuje dokładną wartość dużych liczb całkowitych.
+# big"..." tworzy liczby BigFloat.
+# Pozwala dokładnie zapisać użyte duże współczynniki.
+# Następnie konwertujemy je do Float64.
 wspolczynniki = [
     big"1",
     big"-210",

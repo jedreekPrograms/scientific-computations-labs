@@ -18,6 +18,8 @@ p32 = Float32(0.01)
 p32_cut = Float32(0.01)
 p64 = Float64(0.01)
 
+# r32 - współczynnik wzrostu w arytmetyce Float32.
+# r64 - ten sam współczynnik w arytmetyce Float64.
 r32 = Float32(3)
 r64 = Float64(3)
 

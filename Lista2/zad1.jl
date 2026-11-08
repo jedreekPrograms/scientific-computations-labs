@@ -75,6 +75,9 @@ correct_old = -1.00657107000000e-11
 # Wartość referencyjna dla zmodyfikowanych danych.
 correct_new = -0.004296343192495245
 
+# x_old - wektor x z zadania 4 Listy 1.
+# x_new - wektor x po usunięciu wskazanych cyfr.
+# y - drugi wektor iloczynu skalarnego, bez zmian.
 # Porównanie wyników dla obu typów arytmetyki.
 for T in (Float32, Float64)
 
@@ -107,9 +110,9 @@ for T in (Float32, Float64)
     ]
 
     names = [
-        "(a) W przod",
-        "(b) W tyl",
-        "(c) Od najwiekszego",
+        "(a) W przód",
+        "(b) W tył",
+        "(c) Od największego",
         "(d) Od najmniejszego"
     ]
 
