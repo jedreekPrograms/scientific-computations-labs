@@ -46,9 +46,11 @@ function sum_sorted(x, y, T, ascending)
     negative = filter(p -> p < T(0), products)
 
     if ascending
+        # ascending - true: od najmniejszych modułów (metoda d).
         sort!(positive)
         sort!(negative; rev=true)
     else
+        # ascending - false: od największych modułów (metoda c).
         sort!(positive; rev=true)
         sort!(negative)
     end

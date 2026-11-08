@@ -1,4 +1,3 @@
-
 # Jędrzej Stefanowski
 # Obliczenia naukowe - Lista 2, zadanie 2
 
@@ -10,39 +9,35 @@ using Plots
 # były powtarzalne podczas kolejnych uruchomień.
 Random.seed!(1234)
 
-# Tworzy macierz Hilberta stopnia n.
-# n - liczba wierszy i kolumn.
-# A - wygenerowana macierz.
-function hilb(n)
-    A = zeros(Float64, n, n)
+# Funkcje udostępnione przez prowadzącego
 
-    for i in 1:n
-        for j in 1:n
-            A[i, j] = 1.0 / (i + j - 1)
-        end
+# Tworzy macierz Hilberta o rozmiarze n.
+# n - liczba wierszy i kolumn macierzy.
+function hilb(n::Int)
+    if n < 1
+        error("size n should be >= 1")
     end
 
-    return A
+    return [1 / (i + j - 1) for i in 1:n, j in 1:n]
 end
 
-# Tworzy losową macierz o zadanym wskaźniku uwarunkowania c.
-# n - liczba wierszy i kolumn (n > 1).
-# c - zadany wskaźnik uwarunkowania (c >= 1).
-# Q1, Q2 - macierze ortogonalne otrzymane z rozkładu QR.
-# values - wartości osobliwe od 1 do 1/c.
-# A - wygenerowana macierz losowa.
-function matcond(n, c)
-    Q1 = Matrix(qr(randn(n, n)).Q)
-    Q2 = Matrix(qr(randn(n, n)).Q)
-
-    values = zeros(Float64, n)
-    for i in 1:n
-        values[i] = c^(-(i - 1) / (n - 1))
+# Tworzy losową macierz o zadanym uwarunkowaniu c.
+# n - rozmiar macierzy, n > 1.
+# c - zadany wskaźnik uwarunkowania, c >= 1.
+function matcond(n::Int, c::Float64)
+    if n < 2
+        error("size n should be > 1")
     end
 
-    A = Q1 * Diagonal(values) * Q2
-    return A
+    if c < 1.0
+        error("condition number c should be >= 1.0")
+    end
+
+    (U, S, V) = svd(rand(n, n))
+
+    return U * diagm(0 => [LinRange(1.0, c, n);]) * V'
 end
+
 
 # Rozwiązuje układ Ax = b dwiema metodami i oblicza błędy względne.
 # A - badana macierz kwadratowa.
